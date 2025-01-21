@@ -1,5 +1,6 @@
 package com.jpdev.course.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.io.Serial;
@@ -10,7 +11,7 @@ import java.util.Objects;
 
 @Entity
 @Table(name = "tb_user")
-public class User  implements Serializable {
+public class User implements Serializable {
     @Serial
     private static final long serialVersionUID = 1L;
 
@@ -22,6 +23,7 @@ public class User  implements Serializable {
     private String phone;
     private String password;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "client")
     private List<Order> orders = new ArrayList<>();
 
